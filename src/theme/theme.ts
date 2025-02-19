@@ -8,15 +8,25 @@ const theme = {
     white: "white",
     border: "rgba(217, 217, 217, 1)",
     red: "red",
+    transparent: "transparent",
+    backGround: "rgba(245, 245, 245, 1)",
   },
   labels: {
     welcome: "Olá, seja bem-vindo!",
     enter: "Entrar",
     wage: "Salário: ",
     enterprise: "Empresa: ",
+    customersFound: "clientes encontrados: ",
+    customersPerPage: "Clientes por página:",
+    newCustomers: "Criar cliente",
   },
   inputs: {
     name: "Digite o seu nome:",
+  },
+  link: {
+    clients: "Clientes",
+    selectedCustomers: "Clientes selecionados",
+    exit: "Sair",
   },
 };
 
