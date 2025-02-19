@@ -4,9 +4,7 @@ import { BiPencil } from "react-icons/bi";
 import { FaPlus } from "react-icons/fa6";
 import { GoTrash } from "react-icons/go";
 
-function ClientInfo() {
-  const a = 1;
-
+export const ClientInfo = () => {
   return (
     <Box
       p={4}
@@ -60,6 +58,7 @@ function ClientInfo() {
       </Box>
 
       <Box
+        mt={"10px"}
         w={"100%"}
         display={"flex"}
         flexWrap={"nowrap"}
@@ -78,6 +77,4 @@ function ClientInfo() {
       </Box>
     </Box>
   );
-}
-
-export default ClientInfo;
+};
