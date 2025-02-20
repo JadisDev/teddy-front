@@ -3,8 +3,20 @@ import theme from "../../theme/theme";
 import { BiPencil } from "react-icons/bi";
 import { FaPlus } from "react-icons/fa6";
 import { GoTrash } from "react-icons/go";
+import { ClientDto } from "../../dtos/ClientPaginatorDTO";
 
-export const ClientInfo = () => {
+interface ClientInfoProps {
+  client: ClientDto;
+}
+
+const formatCurrency = (value: string | number) => {
+  return new Intl.NumberFormat("pt-BR", {
+    style: "currency",
+    currency: "BRL",
+  }).format(Number(value));
+};
+
+export const ClientInfo = ({ client }: ClientInfoProps) => {
   return (
     <Box
       p={4}
@@ -35,7 +47,7 @@ export const ClientInfo = () => {
           lineHeight="19.36px"
           letterSpacing="0%"
         >
-          Eduardo
+          {client.name}
         </Text>
         <Text
           fontFamily="Inter"
@@ -44,7 +56,7 @@ export const ClientInfo = () => {
           lineHeight="16.94px"
           letterSpacing="0%"
         >
-          {theme.labels.wage} R$3.500,00
+          {theme.labels.wage} {formatCurrency(client.wage)}
         </Text>
         <Text
           fontFamily="Inter"
@@ -53,7 +65,7 @@ export const ClientInfo = () => {
           lineHeight="16.94px"
           letterSpacing="0%"
         >
-          {theme.labels.enterprise} R$120.000,00
+          {theme.labels.enterprise} {formatCurrency(client.company_value)}
         </Text>
       </Box>
 
@@ -66,13 +78,13 @@ export const ClientInfo = () => {
         justifyContent={"space-between"}
       >
         <Text>
-          <FaPlus width={"17px"} height={"17px"} />
+          <FaPlus size={"17px"} />
         </Text>
         <Text>
-          <BiPencil width={"20px"} height={"20px"} />
+          <BiPencil size={"20px"} />
         </Text>
         <Text>
-          <GoTrash width={"20px"} height={"20px"} color={theme.colors.red} />
+          <GoTrash size={"20px"} color={theme.colors.red} />
         </Text>
       </Box>
     </Box>
