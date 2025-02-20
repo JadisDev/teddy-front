@@ -5,7 +5,7 @@ import { useLocation, useNavigate } from "react-router-dom";
 
 import theme from "../../theme/theme";
 import logo from "../../assets/Logo.svg";
-import { SideMenu } from "../SideMennu";
+import { SideMenu } from "../SideMenu";
 
 export const NavBar: React.FC<{ children?: React.ReactNode }> = ({
   children,

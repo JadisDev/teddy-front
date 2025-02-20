@@ -1,7 +1,8 @@
 import axios from "axios";
+import { toast } from "react-toastify";
 
 const axiosInstance = axios.create({
-  baseURL: "http://localhost:3000/",
+  baseURL: import.meta.env.VITE_API_URL,
   timeout: 5000,
   headers: {
     "Content-Type": "application/json",
@@ -26,10 +27,10 @@ axiosInstance.interceptors.response.use(
     return response;
   },
   (error) => {
-    // Tratar erros globais, como falha na autenticação
     if (error.response && error.response.status === 401) {
-      // Redirecionar para login ou mostrar mensagem de erro
-      console.error("Usuário não autorizado");
+      toast.error("Usuário não autorizado", {
+        autoClose: 3000,
+      });
       window.location.href = "/";
     }
     return Promise.reject(error);

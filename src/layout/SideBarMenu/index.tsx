@@ -16,7 +16,7 @@ export const SidebarMenu = () => {
       path: "",
       icon: RiHome5Fill,
     },
-    { label: "Clientes", path: "/client || /client-selected", icon: TiUser },
+    { label: "Clientes", path: "/client", icon: TiUser },
     { label: "Produtos", path: "", icon: BsGridFill },
   ];
 
