@@ -2,8 +2,11 @@ import { Box, Text } from "@chakra-ui/react";
 import theme from "../../theme/theme";
 import Input from "../../components/Input";
 import Button from "../../components/Button";
+import { useLogin } from "./hooks/useLogin";
 
 export const Login = () => {
+  const { handleLogin, name, setName } = useLogin();
+
   return (
     <Box
       p={4}
@@ -34,12 +37,14 @@ export const Login = () => {
         bg={theme.colors.white}
         color={theme.colors.text}
         textAlign="center"
+        value={name}
+        onChange={(e) => setName(e.target.value)}
       />
 
       <Button
         label={theme.labels.enter}
         size="2xl"
-        onClick={() => alert("Botão clicado!")}
+        onClick={handleLogin}
         backgroundColor={theme.colors.primary}
         w="50%"
       />
