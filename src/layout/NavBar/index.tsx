@@ -1,5 +1,6 @@
 import { Box, Flex, Text, Image, Link } from "@chakra-ui/react";
 import { ReactNode } from "react";
+import { useLocation, useNavigate } from "react-router-dom"; // Importe useLocation
 import theme from "../../theme/theme";
 
 interface NavBarProps {
@@ -7,6 +8,9 @@ interface NavBarProps {
 }
 
 export const NavBar: React.FC<NavBarProps> = ({ children }) => {
+  const location = useLocation();
+  const navigate = useNavigate();
+
   return (
     <>
       <Box
@@ -29,19 +33,39 @@ export const NavBar: React.FC<NavBarProps> = ({ children }) => {
 
           <Flex gap={6}>
             <Link
-              href="#link1"
-              color={theme.colors.text}
+              onClick={() => navigate("/client")}
+              color={
+                location.pathname === "/client"
+                  ? theme.colors.primary
+                  : theme.colors.text
+              }
               _hover={{ textDecoration: "underline" }}
+              fontWeight={location.pathname === "/client" ? "bold" : "normal"}
+              textDecoration={
+                location.pathname === "/client" ? "underline" : "none"
+              }
             >
               {theme.link.clients}
             </Link>
+
             <Link
-              href="#link2"
-              color={theme.colors.text}
+              onClick={() => navigate("/client-selected")}
+              color={
+                location.pathname === "/client-selected"
+                  ? theme.colors.primary
+                  : theme.colors.text
+              }
               _hover={{ textDecoration: "underline" }}
+              fontWeight={
+                location.pathname === "/client-selected" ? "bold" : "normal"
+              }
+              textDecoration={
+                location.pathname === "/client-selected" ? "underline" : "none"
+              }
             >
               {theme.link.selectedCustomers}
             </Link>
+
             <Link
               href="#link3"
               color={theme.colors.text}
