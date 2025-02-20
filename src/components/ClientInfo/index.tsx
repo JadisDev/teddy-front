@@ -7,6 +7,10 @@ import { ClientDto } from "../../dtos/ClientPaginatorDTO";
 
 interface ClientInfoProps {
   client: ClientDto;
+  onEdit?: (client: ClientDto) => void;
+  onDelete?: (client: ClientDto) => void;
+  handleUpdateStatus?: (client: ClientDto) => void;
+  noButtons?: boolean;
 }
 
 const formatCurrency = (value: string | number) => {
@@ -16,7 +20,13 @@ const formatCurrency = (value: string | number) => {
   }).format(Number(value));
 };
 
-export const ClientInfo = ({ client }: ClientInfoProps) => {
+export const ClientInfo = ({
+  client,
+  onEdit,
+  onDelete,
+  handleUpdateStatus,
+  noButtons = false,
+}: ClientInfoProps) => {
   return (
     <Box
       p={4}
@@ -45,7 +55,6 @@ export const ClientInfo = ({ client }: ClientInfoProps) => {
           fontWeight={700}
           fontSize="16px"
           lineHeight="19.36px"
-          letterSpacing="0%"
         >
           {client.name}
         </Text>
@@ -54,7 +63,6 @@ export const ClientInfo = ({ client }: ClientInfoProps) => {
           fontWeight={400}
           fontSize="14px"
           lineHeight="16.94px"
-          letterSpacing="0%"
         >
           {theme.labels.wage} {formatCurrency(client.wage)}
         </Text>
@@ -63,7 +71,6 @@ export const ClientInfo = ({ client }: ClientInfoProps) => {
           fontWeight={400}
           fontSize="14px"
           lineHeight="16.94px"
-          letterSpacing="0%"
         >
           {theme.labels.enterprise} {formatCurrency(client.company_value)}
         </Text>
@@ -73,19 +80,32 @@ export const ClientInfo = ({ client }: ClientInfoProps) => {
         mt={"10px"}
         w={"100%"}
         display={"flex"}
-        flexWrap={"nowrap"}
         alignItems={"center"}
-        justifyContent={"space-between"}
+        justifyContent={noButtons ? "flex-end" : "space-between"}
       >
-        <Text>
-          <FaPlus size={"17px"} />
-        </Text>
-        <Text>
-          <BiPencil size={"20px"} />
-        </Text>
-        <Text>
-          <GoTrash size={"20px"} color={theme.colors.red} />
-        </Text>
+        {!noButtons ? (
+          <>
+            <Text
+              cursor="pointer"
+              onClick={() => handleUpdateStatus && handleUpdateStatus(client)}
+            >
+              <FaPlus size={"17px"} />
+            </Text>
+            <Text cursor="pointer" onClick={() => onEdit && onEdit(client)}>
+              <BiPencil size={"20px"} />
+            </Text>
+            <Text cursor="pointer" onClick={() => onDelete && onDelete(client)}>
+              <GoTrash size={"20px"} color={theme.colors.red} />
+            </Text>
+          </>
+        ) : (
+          <Box
+            borderBottom={`2px solid ${theme.colors.primary}`}
+            width="10px"
+            mt={2}
+            justifyContent={"flex-end"}
+          />
+        )}
       </Box>
     </Box>
   );

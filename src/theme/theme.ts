@@ -19,9 +19,16 @@ const theme = {
     customersFound: "clientes encontrados: ",
     customersPerPage: "Clientes por página:",
     newCustomers: "Criar cliente",
+    updateCustomers: "Editar cliente",
+    deleteClient: "Excluir cliente",
+    messegaDeleteClient: "Você está prestes a excluir o cliente: ",
+    clientSelecteds: "Clientes selecionados:",
+    clearClients: "Limpar clientes selecionados",
   },
   inputs: {
     name: "Digite o seu nome:",
+    wage: "Digite o salário:",
+    enterpriseValue: "Digite o valor da empresa:",
   },
   link: {
     clients: "Clientes",

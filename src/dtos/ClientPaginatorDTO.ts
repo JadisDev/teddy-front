@@ -1,8 +1,8 @@
 export interface ClientDto {
   id: string;
   name: string;
-  wage: string;
-  company_value: string;
+  wage: string | number;
+  company_value: string | number;
   selected: boolean;
 }
 

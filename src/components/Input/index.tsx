@@ -6,18 +6,20 @@ interface CustomInputProps extends InputProps {
   width?: string;
 }
 
-const Input = ({ placeholder, width = "100%", ...props }: CustomInputProps) => {
+export const Input: React.FC<CustomInputProps> = ({
+  placeholder,
+  width = "100%",
+  ...props
+}) => {
   return (
-    <ChakraInput 
-      placeholder={placeholder} 
-      size="lg" 
+    <ChakraInput
+      placeholder={placeholder}
+      size="lg"
       w={width}
-      textAlign="left"
-      borderColor={theme.colors.border} 
-      _placeholder={{ textAlign: "left" }} 
+      borderColor={theme.colors.border}
+      _placeholder={{ textAlign: "left" }}
+      style={{ textAlign: "left" }}
       {...props}
     />
   );
 };
-
-export default Input;
