@@ -1,8 +1,9 @@
 import { Box, Text } from "@chakra-ui/react";
 import theme from "../../theme/theme";
-import Input from "../../components/Input";
+import { Input } from "../../components/Input";
 import Button from "../../components/Button";
 import { useLogin } from "./hooks/useLogin";
+import { ChangeEvent } from "react";
 
 export const Login = () => {
   const { handleLogin, name, setName } = useLogin();
@@ -38,7 +39,7 @@ export const Login = () => {
         color={theme.colors.text}
         textAlign="center"
         value={name}
-        onChange={(e) => setName(e.target.value)}
+        onChange={(e: ChangeEvent<HTMLInputElement>) => setName(e.target.value)}
       />
 
       <Button
