@@ -13,11 +13,11 @@ export const SidebarMenu = () => {
   const menuItems = [
     {
       label: "Home",
-      path: "#",
+      path: "",
       icon: RiHome5Fill,
     },
-    { label: "Clientes", path: "/client", icon: TiUser },
-    { label: "Produtos", path: "#", icon: BsGridFill },
+    { label: "Clientes", path: "/client || /client-selected", icon: TiUser },
+    { label: "Produtos", path: "", icon: BsGridFill },
   ];
 
   return (

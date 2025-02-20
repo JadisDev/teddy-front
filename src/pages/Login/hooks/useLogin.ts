@@ -2,6 +2,7 @@ import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 
 import { generateJwt } from "../../../api/userApi";
+import { toast } from "react-toastify";
 
 export const useLogin = () => {
   const [name, setName] = useState("");
@@ -15,12 +16,16 @@ export const useLogin = () => {
         localStorage.setItem("user", name);
         navigate("/client");
       } else {
-        alert("Informe um nome");
+        toast.error("Informe um nome", {
+          autoClose: 3000,
+        });
       }
     } catch (error) {
       console.error("Erro ao logar:", error);
 
-      alert("Erro inesperado");
+      toast.error("Erro ao logar", {
+        autoClose: 3000,
+      });
     }
   };
 

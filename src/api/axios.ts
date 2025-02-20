@@ -30,6 +30,7 @@ axiosInstance.interceptors.response.use(
     if (error.response && error.response.status === 401) {
       // Redirecionar para login ou mostrar mensagem de erro
       console.error("Usuário não autorizado");
+      window.location.href = "/";
     }
     return Promise.reject(error);
   }

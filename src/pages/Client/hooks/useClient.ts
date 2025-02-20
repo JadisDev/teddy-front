@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import { getClientPaginator } from "../../../api/clientApi";
 import { ClientPaginatorDTO } from "../../../dtos/ClientPaginatorDTO";
+import { toast } from "react-toastify";
 
 export const useClient = () => {
   const [page, setPage] = useState(1);
@@ -16,7 +17,9 @@ export const useClient = () => {
       setClients(result);
       setClientsFound(result.data.length);
     } catch (error) {
-      alert("Erro inesperado");
+      toast.error("Erro inesperado", {
+        autoClose: 3000,
+      });
     } finally {
       setLoading(false);
     }
@@ -29,7 +32,9 @@ export const useClient = () => {
       setClients(result);
       setClientsFound(result.data.length);
     } catch (error) {
-      alert("Erro inesperado");
+      toast.error("Erro inesperado", {
+        autoClose: 3000,
+      });
     } finally {
       setLoading(false);
     }

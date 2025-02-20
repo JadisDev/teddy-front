@@ -4,6 +4,7 @@ import {
   getClientsSelectd,
   updateSelectedClients,
 } from "../../../api/clientApi";
+import { toast } from "react-toastify";
 
 export const useClientSelected = () => {
   const [loading, setLoading] = useState(true);
@@ -15,7 +16,9 @@ export const useClientSelected = () => {
       const result = await getClientsSelectd();
       setClients(result);
     } catch (error) {
-      alert("Erro inesperado");
+      toast.error("Erro inesperado", {
+        autoClose: 3000,
+      });
     } finally {
       setLoading(false);
     }
@@ -28,7 +31,9 @@ export const useClientSelected = () => {
       await updateSelectedClients(uuids || []);
       await handleGetClientsSelectd();
     } catch (error) {
-      alert("Erro inesperado");
+      toast.error("Erro inesperado", {
+        autoClose: 3000,
+      });
     } finally {
       setLoading(false);
     }

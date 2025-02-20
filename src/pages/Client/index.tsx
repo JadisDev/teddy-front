@@ -20,6 +20,7 @@ import { Input } from "../../components/Input";
 import { Modal } from "../../components/Modal";
 import { MaskedInput } from "../../components/MaskedInput";
 import { createClient, deleteClient, updateClient } from "../../api/clientApi";
+import { toast } from "react-toastify";
 
 export const Client = () => {
   const {
@@ -95,7 +96,9 @@ export const Client = () => {
       await updateClient(clientDto.id, { ...clientDto, selected: true });
       await handleGetClients();
     } catch (error) {
-      alert("Erro inesperado");
+      toast.error("Erro inesperado", {
+        autoClose: 3000,
+      });
     } finally {
       setLoading(false);
     }
@@ -112,7 +115,9 @@ export const Client = () => {
       await handleGetClients();
       onClose();
     } catch (error) {
-      alert("Erro inesperado");
+      toast.error("Erro inesperado", {
+        autoClose: 3000,
+      });
     } finally {
       setLoading(false);
     }
@@ -125,7 +130,9 @@ export const Client = () => {
       await handleGetClients();
       onClose();
     } catch (error) {
-      alert("Erro inesperado");
+      toast.error("Erro inesperado", {
+        autoClose: 3000,
+      });
     } finally {
       setLoading(false);
     }
@@ -306,6 +313,7 @@ export const Client = () => {
                   border={`2px ${theme.colors.border}`}
                 >
                   <ClientInfo
+                    key={index}
                     client={client}
                     handleUpdateStatus={handleUpdateStatus}
                     onDelete={handleOnDelete}

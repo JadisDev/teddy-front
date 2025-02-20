@@ -8,7 +8,6 @@ import Button from "../../components/Button";
 export const ClientSelected = () => {
   const { clients, loading, handleUpdateSelectedClients } = useClientSelected();
 
-  console.warn({ clients });
   return (
     <NavBar>
       <Box h="5%" display="grid" gap={4}>
