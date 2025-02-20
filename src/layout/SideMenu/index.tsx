@@ -27,7 +27,7 @@ export const SideMenu: React.FC<SideMenuProps> = ({ isOpen, toggleMenu }) => {
         textAlign="right"
         onClick={toggleMenu}
         height="82px"
-        bg="#5a5a64"
+        bg="#343438"
         display="flex"
         alignItems="center"
         justifyContent="center"
@@ -46,8 +46,8 @@ export const SideMenu: React.FC<SideMenuProps> = ({ isOpen, toggleMenu }) => {
           width="40px"
           height="40px"
           borderRadius="full"
-          bg="gray.300"
-          _hover={{ bg: "gray.400" }}
+          bg="#29292e"
+          _hover={{ bg: "#29292e" }}
           position={"fixed"}
           mt={"-21px"}
           left={"227px"}
