@@ -12,6 +12,7 @@ export const useLogin = () => {
       if (name.trim() !== "") {
         const response = await generateJwt(name);
         localStorage.setItem("token", response);
+        localStorage.setItem("user", name);
         navigate("/client");
       } else {
         alert("Informe um nome");

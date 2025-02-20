@@ -16,6 +16,8 @@ export const NavBar: React.FC<{ children?: React.ReactNode }> = ({
 
   const toggleMenu = () => setIsOpen(!isOpen);
 
+  const name = localStorage.getItem("user");
+
   return (
     <>
       <Box
@@ -73,7 +75,11 @@ export const NavBar: React.FC<{ children?: React.ReactNode }> = ({
             </Link>
 
             <Link
-              href="#link3"
+              onClick={() => {
+                localStorage.setItem("token", "");
+                localStorage.setItem("user", "");
+                navigate("/");
+              }}
               color={theme.colors.text}
               _hover={{ textDecoration: "underline" }}
             >
@@ -81,7 +87,12 @@ export const NavBar: React.FC<{ children?: React.ReactNode }> = ({
             </Link>
           </Flex>
 
-          <Text color={theme.colors.text}>Olá, Usuário</Text>
+          <Text color={theme.colors.text}>
+            Olá,{" "}
+            <Text as="span" fontWeight="bold">
+              {name}
+            </Text>
+          </Text>
         </Flex>
       </Box>
 
